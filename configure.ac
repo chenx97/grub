@@ -110,15 +110,15 @@ case "$target_cpu" in
   amd64)	target_cpu=x86_64 ;;
   sparc)	target_cpu=sparc64 ;;
   mips64el)
-                target_cpu=mips64el
+    target_cpu=mips64el
 		machine_CPPFLAGS="$machine_CPPFLAGS -DGRUB_CPU_MIPS64EL=1"
 		;;
   mipsel)
-                target_cpu=mipsel
+    target_cpu=mipsel
 		machine_CPPFLAGS="$machine_CPPFLAGS -DGRUB_CPU_MIPSEL=1"
 		;;
   mips|mips64)
-                target_cpu=mips
+    target_cpu=mips
 		machine_CPPFLAGS="$machine_CPPFLAGS -DGRUB_CPU_MIPS=1"
 		;;
   arm*)		target_cpu=arm ;;

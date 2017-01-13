@@ -24,21 +24,61 @@
 #include <grub/cpu/time.h>
 #include <grub/efi/efi.h>
 #include <grub/loader.h>
+#include <grub/machine/loongson.h>
+
+static grub_uint64_t tmr;
+static grub_efi_event_t tmr_evt;
+
+static grub_uint64_t
+grub_efi_get_time_ms (void)
+{
+  return tmr;
+}
+
+static void
+grub_loongson_increment_timer (grub_efi_event_t event __attribute__ ((unused)),
+                 void *context __attribute__ ((unused)))
+{
+  tmr += 10;
+}
+
+
 
 void
 grub_machine_init (void)
 {
+  grub_efi_boot_services_t *b;
+
   grub_efi_init ();
 
-  /* FIXME: Get cpuclock from EFI. */
-  grub_timer_init (1000000000U);
+  b = grub_efi_system_table->boot_services;
+  efi_call_5 (b->create_event, GRUB_EFI_EVT_TIMER | GRUB_EFI_EVT_NOTIFY_SIGNAL,
+              GRUB_EFI_TPL_CALLBACK, grub_loongson_increment_timer, NULL, &tmr_evt);
+  efi_call_3 (b->set_timer, tmr_evt, GRUB_EFI_TIMER_PERIODIC, 100000);
+
+  grub_install_get_time_ms (grub_efi_get_time_ms);
+
+  if (grub_efi_is_loongson ())
+    grub_efi_loongson_init ();
+  else
+    /* FIXME: Get cpuclock from EFI. */
+    grub_timer_init (1000000000U);
 }
 
 void
 grub_machine_fini (int flags)
 {
+  grub_efi_boot_services_t *b;
+
   if (!(flags & GRUB_LOADER_FLAG_NORETURN))
     return;
 
+  b = grub_efi_system_table->boot_services;
+
+  efi_call_3 (b->set_timer, tmr_evt, GRUB_EFI_TIMER_CANCEL, 0);
+  efi_call_1 (b->close_event, tmr_evt);
+
+  if (grub_efi_is_loongson ())
+    grub_efi_loongson_fini ();
   grub_efi_fini ();
 }
