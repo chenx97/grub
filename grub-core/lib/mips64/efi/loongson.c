@@ -43,6 +43,9 @@ static struct
 } GRUB_PACKED
 * loongson_boot_params;
 
+#pragma GCC diagnostic ignored "-Wunused-function"
+#pragma GCC diagnostic ignored "-Waddress-of-packed-member"
+
 static void
 grub_efi_loongson_init_reset_system (void)
 {
@@ -479,7 +482,7 @@ grub_efi_loongson_memmap_sort(struct memmap array[], grub_uint32_t length, mem_m
    bpmem->map[index].memtype = memtype;
    bpmem->map[index].memstart = array[j].memstart;
    bpmem->map[index].memsize = tempmemsize;
-   grub_dprintf("loongson", "map[%d]:type %x, start 0x%llx, end 0x%llx\n",
+   grub_dprintf("loongson", "map[%d]:type %x, start 0x%lx, end 0x%lx\n",
 		   index,
 		   bpmem->map[index].memtype,
 		   bpmem->map[index].memstart,
