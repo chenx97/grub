@@ -21,6 +21,7 @@
 #include <grub/kernel.h>
 #include <grub/misc.h>
 #include <grub/mm.h>
+#include <grub/time.h>
 #include <grub/cpu/time.h>
 #include <grub/efi/efi.h>
 #include <grub/loader.h>
