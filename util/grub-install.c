@@ -1183,7 +1183,7 @@ main (int argc, char *argv[])
 	      efi_file = "BOOTRISCV64.EFI";
 	      break;
 	    case GRUB_INSTALL_PLATFORM_MIPS64EL_EFI:
-	      efi_file = "BOOTMIPS64EL.EFI";
+	      efi_file = "BOOTMIPS.EFI";
 	      break;
 	    default:
 	      grub_util_error ("%s", _("You've found a bug"));
