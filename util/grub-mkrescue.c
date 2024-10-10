@@ -828,7 +828,7 @@ main (int argc, char *argv[])
       make_image_abs (GRUB_INSTALL_PLATFORM_RISCV64_EFI, "riscv64-efi", imgname);
       free (imgname);
 
-      imgname = grub_util_path_concat (2, efidir_efi_boot, "bootmips64el.efi");
+      imgname = grub_util_path_concat (2, efidir_efi_boot, "BOOTMIPS.EFI");
       make_image_abs (GRUB_INSTALL_PLATFORM_MIPS64EL_EFI, "mips64el-efi", imgname);
       free (imgname);
 
