@@ -1757,6 +1757,7 @@ module = {
   common = lib/setjmp.S;
   extra_dist = lib/i386/setjmp.S;
   extra_dist = lib/mips/setjmp.S;
+  extra_dist = lib/mips64/setjmp.S;
   extra_dist = lib/x86_64/setjmp.S;
   extra_dist = lib/sparc64/setjmp.S;
   extra_dist = lib/powerpc/setjmp.S;
