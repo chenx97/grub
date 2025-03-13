@@ -9,7 +9,7 @@
 #elif defined(__sparc__)
 #include "./sparc64/setjmp.S"
 #elif defined(__mips__)
-#if defined(_ABI64) && (_MIPS_SIM == _ABI64)
+#if defined(_ABI64)
 #include "./mips64/setjmp.S"
 #else
 #include "./mips/setjmp.S"

@@ -914,6 +914,7 @@ static struct
     [GRUB_INSTALL_PLATFORM_MIPS_QEMU_MIPS] =   { "mips",        "qemu_mips" },
     [GRUB_INSTALL_PLATFORM_MIPSEL_ARC] =       { "mipsel",      "arc"       },
     [GRUB_INSTALL_PLATFORM_MIPS_ARC] =         { "mips",        "arc"       },
+    [GRUB_INSTALL_PLATFORM_MIPS64EL_EFI] =     { "mips64el",    "efi"       },
     [GRUB_INSTALL_PLATFORM_SPARC64_IEEE1275] = { "sparc64",     "ieee1275"  },
     [GRUB_INSTALL_PLATFORM_POWERPC_IEEE1275] = { "powerpc",     "ieee1275"  },
     [GRUB_INSTALL_PLATFORM_IA64_EFI] =         { "ia64",        "efi"       },
